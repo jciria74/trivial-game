@@ -1,0 +1,109 @@
+.Quizz {
+    background-color: #00011f;
+    height: 100vh;
+    color: white;
+
+    & p {
+        margin: 0;
+    }
+
+    & .justifyCenter {
+        justify-content: center;
+        display: flex;
+    }
+
+    & .info_header {
+    height: 40px;
+    background-color: #FF8D1E;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    margin: 25px 0px 60px 0px;
+
+        & .points, .counter_question {
+        font-size: 20px;
+        }
+    } 
+
+    & .question {
+        border: 10px solid #FFB03A;
+        border-radius: 20px;
+        width: 400px;
+        height: 200px;
+        margin-bottom: 45px;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        & p {
+            font-size: 20px;
+        }
+    }
+
+    & .question_fail {
+        border: 10px solid #FFB03A;
+        border-radius: 20px;
+        width: 400px;
+        height: 200px;
+        margin-bottom: 45px;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        background-image: url(../../img/fail.png.png);
+        background-size: contain;
+        background-position: center;
+        background-color: rgb(255, 255, 255);
+        animation: bounceIn 2s ease-in-out ;
+        z-index: 100;
+        }
+        @keyframes bounceIn {
+        0% {
+            transform: scale(0.1);
+            opacity: 0;
+        }
+        60% {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(01);
+        }
+        
+        }
+
+    & .answer {
+        justify-content: center;
+        display: flex;
+        background-color: #4B4D80;
+        border-radius: 20px;
+        margin: 20px 20px;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+
+        & p {
+            margin: 10px 0px;
+        }
+    }
+
+    & .correct_answer {
+        justify-content: center;
+        display: flex;
+        background-color: #3ABB78;
+        border-radius: 20px;
+        margin: 20px 20px;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+
+        & p {
+            margin: 10px 0px;
+        }
+    }
+}
+
+   
+

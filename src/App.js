@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import MyContext from "./context";
+import Home from "./Components/Home/Home";
+import Quizz from "./Components/Quizz/Quizz";
 
 function App() {
+  //Estado
+  const [hooksState, setHooksState] = useState({
+    dataAPI: '',
+    isloaded: ''
+  });
+  //Para poder exportar el estado y la funcion que lo cambia desde cualquier componente mediante contexto:
+  const stateAndFunction = { hooksState, setHooksState };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MyContext.Provider value={stateAndFunction}>
+      <Router>
+        <div className="App">
+          <Route path="/" exact component={Home} />
+          <Route path="/quizz" component={Quizz} />
+        </div>
+      </Router>
+    </MyContext.Provider>
   );
 }
 
