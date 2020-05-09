@@ -5,20 +5,25 @@ import MyContext from "./context";
 import Home from "./Components/Home/Home";
 import Quizz from "./Components/Quizz/Quizz";
 
+
 function App() {
+  
   //Estado
   const [hooksState, setHooksState] = useState({
     dataAPI: '',
-    isloaded: ''
+    isloaded: '',
+    points: 0
   });
   //Para poder exportar el estado y la funcion que lo cambia desde cualquier componente mediante contexto:
   const stateAndFunction = { hooksState, setHooksState };
+
+
   return (
     <MyContext.Provider value={stateAndFunction}>
       <Router>
         <div className="App">
           <Route path="/" exact component={Home} />
-          <Route path="/quizz" component={Quizz} />
+          <Route path="/quizz" exact component={Quizz} />
         </div>
       </Router>
     </MyContext.Provider>

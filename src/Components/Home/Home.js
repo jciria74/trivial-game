@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import MyContext from "../../context";
 import "./Home.scss";
 import caratula from "../../img/openTrivia.png";
-import {
-    levelButtons,
-    numberButtons,
-} from "../../constants/constants";
+import { levelButtons, numberButtons } from "../../constants/constants";
 
 function Home() {
     //Contexto
@@ -21,7 +18,7 @@ function Home() {
         numberQuestions: "",
     });
 
-    //Llamada a la API para obtener las categorías
+    //Llamada a la API solo para obtener y filtrar las categorías y meterlas en el estado de Home
     useEffect(() => {
         fetch("https://opentdb.com/api_category.php")
             .then((data) => data.json())
@@ -31,12 +28,13 @@ function Home() {
                         (category) =>
                             !category.name.includes("Art") && !category.name.includes(":")
                     )
-                );
+                )
             });
     }, []);
 
-    //Función para llamar a la API
-    useEffect(()=>{
+    //Función para llamar a la API y guardarla en el contexto cuando el jugador haya elegido todas las opciones
+    useEffect(() => {
+        //Condición para que todas las opciones estén seleccionadas
         if (
             choices.level !== "" &&
             choices.categoryNumber !== "" &&
@@ -53,10 +51,8 @@ function Home() {
                         isloaded: true,
                     });
                 });
-        }
-    
-    },[choices])
-    
+        };
+    }, [choices]);
 
     return (
         <div className="Home">
@@ -96,56 +92,61 @@ function Home() {
 
                 {/* NIVEL */}
                 <div className="row col-12 justifyCenter alignCenter rowItems">
-                    <h5>LEVEL</h5>
-
-                    <div className="button-row col-4">
-                        {levelButtons.map((item, index) => (
-                            <div
-                                className={
-                                    choices.level === item.difficulty.toLowerCase()
-                                        ? "level-buttons-selected"
-                                        : "level-buttons"
-                                }
-                                key={index}
-                                onClick={() =>
-                                    setChoices({
-                                        ...choices,
-                                        level: item.difficulty.toLowerCase(),
-                                    })
-                                }
-                            >
-                                {item.difficulty}
-                            </div>
-                        ))}
+                    <div className=" col-6">
+                        <div className=" col-12">
+                            <h5>LEVEL</h5>
+                        </div>
+                        <div className="button-row col-12">
+                            {levelButtons.map((item, index) => (
+                                <div
+                                    className={
+                                        choices.level === item.difficulty.toLowerCase()
+                                            ? "level-buttons-selected"
+                                            : "level-buttons"
+                                    }
+                                    key={index}
+                                    onClick={() =>
+                                        setChoices({
+                                            ...choices,
+                                            level: item.difficulty.toLowerCase(),
+                                        })
+                                    }
+                                >
+                                    {item.difficulty}
+                                </div>
+                            ))}
+                        </div>
                     </div>
-
-                    {/* Nº PREGUNTAS */}
-                    <h5>QUESTIONS</h5>
-                    <div className="button-row col-4">
-                        {numberButtons.map((item, index) => (
-                            <div
-                                className={
-                                    choices.numberQuestions === item.numberQuestions
-                                        ? "level-buttons-selected"
-                                        : "level-buttons"
-                                }
-                                key={index}
-                                onClick={() =>
-                                    setChoices({
-                                        ...choices,
-                                        numberQuestions: item.numberQuestions,
-                                    })
-                                }
-                            >
-                                {item.numberQuestions}
-                            </div>
-                        ))}
+                    <div className=" col-6">
+                        <div className="col-12">
+                            {/* Nº PREGUNTAS */}
+                            <h5>QUESTIONS</h5>
+                        </div>
+                        <div className="button-row  col-12">
+                            {numberButtons.map((item, index) => (
+                                <div
+                                    className={
+                                        choices.numberQuestions === item.numberQuestions
+                                            ? "level-buttons-selected number"
+                                            : "level-buttons number"
+                                    }
+                                    key={index}
+                                    onClick={() =>
+                                        setChoices({
+                                            ...choices,
+                                            numberQuestions: item.numberQuestions,
+                                        })
+                                    }
+                                >
+                                    {item.numberQuestions}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-
                 {/* BOTON START */}
                 <div className="start justifyCenter alignCenter">
-                    {/*Llammos a la API si todos los campos del estado han sido seleccionados*/}
+                    {/*Aparece el botón START cuando todos los campos han sido seleccionados*/}
                     <Link to="/quizz">
                         <div
                             className={
@@ -155,7 +156,6 @@ function Home() {
                                     ? "start-button"
                                     : "start-button-off"
                             }
-                            
                         >
                             <p>START</p>
                         </div>

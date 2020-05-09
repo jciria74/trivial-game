@@ -1,0 +1,61 @@
+.GameOver {
+  background-color: #00011f;
+  height: 100vh;
+  color: white;
+
+  & a:hover,
+  a:visited,
+  a:link,
+  a:active {
+    text-decoration: none;
+  }
+
+  & .main_image {
+    margin-bottom: 50px;
+  }
+
+  & .title-image {
+    width: 25%;
+    margin-top: 30px;
+  }
+
+  & .justifyCenter {
+    justify-content: center;
+    display: flex;
+  }
+
+  & .alignCenter {
+    align-items: center;
+    display: flex;
+  }
+
+  & .resume_card {
+    flex-direction: column;
+    background-color: #ffb03a;
+    color: #00011f;
+    border-radius: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    padding: 40px;
+  }
+
+  & .points_style {
+    font-weight: bold;
+    margin: 10px;
+  }
+
+  & .initialize {
+    background-color: #3abb7a;
+    border-radius: 20px;
+    color: #4b4d80;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    & p {
+      margin: 0 20px;
+    }
+  }
+}

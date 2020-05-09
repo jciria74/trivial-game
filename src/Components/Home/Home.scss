@@ -2,8 +2,20 @@
   background-color: #00011f;
   height: 100vh;
 
+  & a:hover,
+  a:visited,
+  a:link,
+  a:active {
+    text-decoration: none;
+  }
+
+  & h5 {
+    color: white;
+    font-size: 1rem;
+  }
+
   & .main-image {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
 
   & .justifyCenter {
@@ -17,21 +29,15 @@
   }
 
   & .rowCategories {
-    margin: 0  !important;
+    margin: 0 !important;
   }
 
   & .rowItems {
     margin: 20px 0;
-
-    & h5 {
-      margin: 0 10px 0 10px !important;
-      color: white;
-      
-    }
   }
 
   & .title-image {
-    width: 40%;
+    width: 25%;
     margin-top: 30px;
   }
 
@@ -41,7 +47,7 @@
     align-items: center;
     & h5 {
       color: white;
-      
+      font-size: 1rem;
     }
   }
 
@@ -74,7 +80,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
+      font-weight: lighter;
       cursor: pointer;
     }
 
@@ -85,10 +91,10 @@
       background-color: #ffaf3a;
       border-radius: 20px;
       height: 40px;
-      color: #fcfcfc;
+      color: #DD3930;
       text-align: center;
       justify-content: center;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
     }
   }
@@ -112,7 +118,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
+      font-weight: lighter;
       cursor: pointer;
     }
 
@@ -123,11 +129,15 @@
       background-color: #ffaf3a;
       border-radius: 20px;
       height: 40px;
-      color: #fcfcfc;
+      color: #DD3930;
       text-align: center;
       justify-content: center;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
+    }
+
+    & .number {
+      width: 70px;
     }
   }
 
@@ -135,21 +145,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     border-radius: 50px;
-    border: 2px solid #B8A4E3;
+    margin-top: 20px;
+    border: 5px solid #91299c73;
     cursor: pointer;
-    background-color: #FF5436;
+    background-color: #ff5436;
+    animation: shadow-pulse 1s infinite;
+    @keyframes shadow-pulse {
+      0% {
+        box-shadow: 0 0 0 0px #91299c73;
+      }
+
+      100% {
+        box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+      }
+    }
 
     & p {
       margin: 0 !important;
-      color: #000120;
+      color: white;
       font-weight: bolder;
-      font-size: 30px;
+      font-size: 25px;
     }
   }
+
   & .start-button-off {
     display: none;
   }
+  
 }
