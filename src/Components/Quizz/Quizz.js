@@ -63,7 +63,7 @@ function Quizz() {
         } else {
             setFail(true)
             if (points !== 0) {
-                setPoints(points - 10);
+                setPoints(points - 5);
             }
             setTimeout(() => {
                 setCounterQ(counterQ + 1)
